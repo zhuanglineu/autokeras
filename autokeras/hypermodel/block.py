@@ -88,19 +88,33 @@ class RNNBlock(base.Block):
             be tuned automatically.
         layer_type: String. 'gru' or 'lstm'. If left unspecified, it will be tuned
             automatically.
+        attention: Boolean. Apply Recurrent attention. If left unspecified, it will
+            be tuned automatically. Does not go together with Bidirectional
     """
 
     def __init__(self,
-                 return_sequences=False,
+                 return_sequences=True,
                  bidirectional=None,
                  num_layers=None,
                  layer_type=None,
+                 attention=None,
                  **kwargs):
         super().__init__(**kwargs)
         self.return_sequences = return_sequences
         self.bidirectional = bidirectional
         self.num_layers = num_layers
         self.layer_type = layer_type
+        self.attention = attention
+
+    @staticmethod
+    def attention_over_time(inputs):
+        time_steps = int(inputs.shape[1])
+        context_vector = tf.keras.layers.Permute((2, 1))(inputs)
+        context_vector = tf.keras.layers.Dense(time_steps,
+                                              activation='softmax')(context_vector)
+        context_vector = tf.keras.layers.Permute((2, 1))(context_vector)
+        mul_attention_out = tf.keras.layers.Multiply()([inputs, context_vector])
+        return mul_attention_out
 
     def get_state(self):
         state = super().get_state()
@@ -141,23 +155,29 @@ class RNNBlock(base.Block):
         num_layers = self.num_layers or hp.Choice('num_layers',
                                                   [1, 2, 3],
                                                   default=2)
+        attention = self.attention or hp.Choice('attention',
+                                                [True, False],
+                                                default=True)
         rnn_layers = {
             'gru': tf.keras.layers.GRU,
             'lstm': tf.keras.layers.LSTM
         }
         in_layer = rnn_layers[layer_type]
+
         for i in range(num_layers):
             return_sequences = True
             if i == num_layers - 1:
                 return_sequences = self.return_sequences
             if bidirectional:
                 output_node = tf.keras.layers.Bidirectional(
-                    in_layer(feature_size,
-                             return_sequences=return_sequences))(output_node)
+                    in_layer(feature_size, return_sequences=return_sequences))(
+                    output_node)
             else:
                 output_node = in_layer(
                     feature_size,
                     return_sequences=return_sequences)(output_node)
+                output_node = self.attention_over_time(
+                    output_node) if attention else output_node
         return output_node
 
 

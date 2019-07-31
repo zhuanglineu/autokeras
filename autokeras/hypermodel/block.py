@@ -110,8 +110,8 @@ class RNNBlock(base.Block):
     def attention_over_time(inputs):
         time_steps = int(inputs.shape[1])
         context_vector = tf.keras.layers.Permute((2, 1))(inputs)
-        context_vector = tf.keras.layers.Dense(time_steps,
-                                              activation='softmax')(context_vector)
+        context_vector = tf.keras.layers.Dense(time_steps, activation='softmax')(
+            context_vector)
         context_vector = tf.keras.layers.Permute((2, 1))(context_vector)
         mul_attention_out = tf.keras.layers.Multiply()([inputs, context_vector])
         return mul_attention_out

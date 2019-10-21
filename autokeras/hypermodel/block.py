@@ -89,7 +89,7 @@ class RNNBlock(base.Block):
         layer_type: String. 'gru' or 'lstm'. If left unspecified, it will be tuned
             automatically.
         attention: Boolean. Apply Recurrent attention. If left unspecified, it will
-            be tuned automatically. Does not go together with Bidirectional
+            be tuned automatically. Does not go together with Bidirectional.
     """
 
     def __init__(self,

@@ -122,7 +122,8 @@ class RNNBlock(base.Block):
             'return_sequences': self.return_sequences,
             'bidirectional': self.bidirectional,
             'num_layers': self.num_layers,
-            'layer_type': self.layer_type})
+            'layer_type': self.layer_type,
+            'attention': self.attention})
         return state
 
     def set_state(self, state):
@@ -131,6 +132,7 @@ class RNNBlock(base.Block):
         self.bidirectional = state['bidirectional']
         self.num_layers = state['num_layers']
         self.layer_type = state['layer_type']
+        self.attention = state['attention']
 
     def build(self, hp, inputs=None):
         inputs = nest.flatten(inputs)

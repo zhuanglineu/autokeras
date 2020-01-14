@@ -1,0 +1,1648 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for AutoKeras.">
+      
+      
+        <link rel="canonical" href="http://autokeras.com/start/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="/img/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
+    
+    
+      
+        <title>Getting Started 0.4 - AutoKeras</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-44322747-3", "autokeras.com")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#getting-started" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://autokeras.com" title="AutoKeras" class="md-header-nav__button md-logo">
+          
+            <img src="/img/logo_white.svg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AutoKeras
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Getting Started 0.4
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/keras-team/autokeras" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://autokeras.com" title="AutoKeras" class="md-nav__button md-logo">
+      
+        <img src="/img/logo_white.svg" width="48" height="48">
+      
+    </a>
+    AutoKeras
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/keras-team/autokeras" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Getting Started 1.0
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Getting Started 1.0
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/image_classification/" title="Image Classification" class="md-nav__link">
+      Image Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/image_regression/" title="Image Regression" class="md-nav__link">
+      Image Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/text_classification/" title="Text Classification" class="md-nav__link">
+      Text Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/text_regression/" title="Text Regression" class="md-nav__link">
+      Text Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/structured_data_classification/" title="Structured Data Classification" class="md-nav__link">
+      Structured Data Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/structured_data_regression/" title="Structured Data Regression" class="md-nav__link">
+      Structured Data Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/multi/" title="Multi-Modal and Multi-Task" class="md-nav__link">
+      Multi-Modal and Multi-Task
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/customized/" title="Customized Model" class="md-nav__link">
+      Customized Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tutorial/export/" title="Export Model" class="md-nav__link">
+      Export Model
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Getting Started 0.4
+      </label>
+    
+    <a href="./" title="Getting Started 0.4" class="md-nav__link md-nav__link--active">
+      Getting Started 0.4
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest-stable-version-pip-installation" class="md-nav__link">
+    Latest Stable Version (pip installation):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bleeding-edge-version-manual-installation" class="md-nav__link">
+    Bleeding Edge Version (manual installation):
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-simple-example" class="md-nav__link">
+    A Simple Example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-with-numpy-array-npy-format" class="md-nav__link">
+    Data with numpy array (.npy) format.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-your-data-are-raw-image-files-eg-jpg-png-bmp" class="md-nav__link">
+    What if your data are raw image files (e.g. .jpg, .png, .bmp)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-multi-gpu-training" class="md-nav__link">
+    Enable Multi-GPU Training
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portable-models" class="md-nav__link">
+    Portable Models
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-export-portable-model" class="md-nav__link">
+    How to export Portable model?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-load-exported-portable-model" class="md-nav__link">
+    How to load exported Portable model?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-visualizations" class="md-nav__link">
+    Model Visualizations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-visualize-the-best-selected-architecture" class="md-nav__link">
+    How to visualize the best selected architecture?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-modules" class="md-nav__link">
+    Net Modules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlpmodule-tutorial" class="md-nav__link">
+    MlpModule tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cnnmodule-tutorial" class="md-nav__link">
+    CnnModule tutorial.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-modules" class="md-nav__link">
+    Task Modules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-text-classifier-tutorial" class="md-nav__link">
+    Automated text classifier tutorial.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pretrained-models" class="md-nav__link">
+    Pretrained Models
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-detection-tutorial" class="md-nav__link">
+    Object detection tutorial.
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-wuyang-chen-from-dr-atlas-wangs-group-at-cse-department-texas-am" class="md-nav__link">
+    by Wuyang Chen from Dr. Atlas Wang's group at CSE Department, Texas A&amp;M.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentiment-analysis-tutorial" class="md-nav__link">
+    Sentiment Analysis tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-classification-tutorial" class="md-nav__link">
+    Topic Classification tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-generator-tutorial" class="md-nav__link">
+    Voice generator tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-recognizer-tutorial" class="md-nav__link">
+    Voice recognizer tutorial.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../docker/" title="Docker" class="md-nav__link">
+      Docker
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="Contributing Guide" class="md-nav__link">
+      Contributing Guide
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      Task APIs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        Task APIs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../image_classifier/" title="ImageClassifier" class="md-nav__link">
+      ImageClassifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../image_regressor/" title="ImageRegressor" class="md-nav__link">
+      ImageRegressor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../text_classifier/" title="TextClassifier" class="md-nav__link">
+      TextClassifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../text_regressor/" title="TextRegressor" class="md-nav__link">
+      TextRegressor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../structured_data_classifier/" title="StructuredDataClassifier" class="md-nav__link">
+      StructuredDataClassifier
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../structured_data_regressor/" title="StructuredDataRegressor" class="md-nav__link">
+      StructuredDataRegressor
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../auto_model/" title="AutoModel" class="md-nav__link">
+      AutoModel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      Building Blocks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        Building Blocks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../base/" title="Base Classes" class="md-nav__link">
+      Base Classes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../node/" title="Node" class="md-nav__link">
+      Node
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../preprocessor/" title="Preprocessor" class="md-nav__link">
+      Preprocessor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../block/" title="Block" class="md-nav__link">
+      Block
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../head/" title="Head" class="md-nav__link">
+      Head
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest-stable-version-pip-installation" class="md-nav__link">
+    Latest Stable Version (pip installation):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bleeding-edge-version-manual-installation" class="md-nav__link">
+    Bleeding Edge Version (manual installation):
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-simple-example" class="md-nav__link">
+    A Simple Example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-with-numpy-array-npy-format" class="md-nav__link">
+    Data with numpy array (.npy) format.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-your-data-are-raw-image-files-eg-jpg-png-bmp" class="md-nav__link">
+    What if your data are raw image files (e.g. .jpg, .png, .bmp)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-multi-gpu-training" class="md-nav__link">
+    Enable Multi-GPU Training
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portable-models" class="md-nav__link">
+    Portable Models
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-export-portable-model" class="md-nav__link">
+    How to export Portable model?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-load-exported-portable-model" class="md-nav__link">
+    How to load exported Portable model?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-visualizations" class="md-nav__link">
+    Model Visualizations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-visualize-the-best-selected-architecture" class="md-nav__link">
+    How to visualize the best selected architecture?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-modules" class="md-nav__link">
+    Net Modules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mlpmodule-tutorial" class="md-nav__link">
+    MlpModule tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cnnmodule-tutorial" class="md-nav__link">
+    CnnModule tutorial.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-modules" class="md-nav__link">
+    Task Modules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-text-classifier-tutorial" class="md-nav__link">
+    Automated text classifier tutorial.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pretrained-models" class="md-nav__link">
+    Pretrained Models
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-detection-tutorial" class="md-nav__link">
+    Object detection tutorial.
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-wuyang-chen-from-dr-atlas-wangs-group-at-cse-department-texas-am" class="md-nav__link">
+    by Wuyang Chen from Dr. Atlas Wang's group at CSE Department, Texas A&amp;M.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentiment-analysis-tutorial" class="md-nav__link">
+    Sentiment Analysis tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-classification-tutorial" class="md-nav__link">
+    Topic Classification tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-generator-tutorial" class="md-nav__link">
+    Voice generator tutorial.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-recognizer-tutorial" class="md-nav__link">
+    Voice recognizer tutorial.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="getting-started">Getting Started</h1>
+<hr />
+<h2 id="installation">Installation</h2>
+<p>The installation of Auto-Keras is the same as other python packages. </p>
+<p><strong>Note:</strong> currently, Auto-Keras is only compatible with: <strong>Python 3.6</strong>.</p>
+<h3 id="latest-stable-version-pip-installation">Latest Stable Version (<code>pip</code> installation):</h3>
+<p>You can run the following <code>pip</code> installation command in your terminal to install the latest stable version.</p>
+<div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">autokeras</span>
+</pre></div>
+
+
+<h3 id="bleeding-edge-version-manual-installation">Bleeding Edge Version (manual installation):</h3>
+<p>If you want to install the latest development version. 
+You need to download the code from the GitHub repo and run the following commands in the project directory.</p>
+<div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+
+
+<h2 id="a-simple-example">A Simple Example</h2>
+<p>We show an example of image classification on the MNIST dataset, which is a famous benchmark image dataset for hand-written digits classification. Auto-Keras supports different types of data inputs. </p>
+<h3 id="data-with-numpy-array-npy-format">Data with numpy array (.npy) format.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/a_simple_example/mnist.py">[source]</a></p>
+<p>If the images and the labels are already formatted into numpy arrays, you can </p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="kn">from</span> <span class="nn">autokeras.image.image_supervised</span> <span class="kn">import</span> <span class="n">ImageClassifier</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">time_limit</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">final_fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">retrain</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In the example above, the images and the labels are already formatted into numpy arrays.</p>
+<h3 id="what-if-your-data-are-raw-image-files-eg-jpg-png-bmp">What if your data are raw image files (<em>e.g.</em> .jpg, .png, .bmp)?</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/a_simple_example/load_raw_image.py">[source]</a></p>
+<p>You can use our <code>load_image_dataset</code> function to load the images and their labels as follows.</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.image.image_supervised</span> <span class="kn">import</span> <span class="n">load_image_dataset</span>
+
+<span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_image_dataset</span><span class="p">(</span><span class="n">csv_file_path</span><span class="o">=</span><span class="s2">&quot;train/label.csv&quot;</span><span class="p">,</span>
+                                      <span class="n">images_path</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_image_dataset</span><span class="p">(</span><span class="n">csv_file_path</span><span class="o">=</span><span class="s2">&quot;test/label.csv&quot;</span><span class="p">,</span>
+                                    <span class="n">images_path</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The argument <code>csv_file_path</code> is the path to the CSV file containing the image file names and their corresponding labels. Both csv files and the raw image datasets could be downloaded from <a href="https://drive.google.com/a/tamu.edu/file/d/10TyvztrdL0fBaFlgGaqoRTlS3ts4faM8/view?usp=sharing">link</a>.
+Here is an example of the csv file.</p>
+<div class="codehilite"><pre><span></span><span class="n">File</span> <span class="n">Name</span><span class="p">,</span><span class="n">Label</span>
+<span class="mi">00000</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">5</span>
+<span class="mi">00001</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">00002</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">4</span>
+<span class="mi">00003</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">1</span>
+<span class="mi">00004</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">9</span>
+<span class="mi">00005</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">2</span>
+<span class="mi">00006</span><span class="p">.</span><span class="n">jpg</span><span class="p">,</span><span class="mi">1</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>The second argument <code>images_path</code> is the path to the directory containing all the images with those file names listed in the CSV file.
+The returned values <code>x_train</code> and <code>y_train</code> are the numpy arrays,
+which can be directly feed into the <code>fit</code> function of <code>ImageClassifier</code>.</p>
+<p>This CSV file for train or test can be created from folders containing images of a specific class (meaning label):
+<div class="codehilite"><pre><span></span><span class="n">train</span>
+<span class="err">└───</span><span class="n">class_1</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="n">class_1_image_1</span><span class="p">.</span><span class="n">png</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="n">class_1_image_2</span><span class="p">.</span><span class="n">png</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="p">...</span>
+<span class="err">└───</span><span class="n">class_2</span>
+    <span class="err">│</span>   <span class="n">class_2_image_1</span><span class="p">.</span><span class="n">png</span>
+    <span class="err">│</span>   <span class="n">class_2_image_2</span><span class="p">.</span><span class="n">png</span>
+    <span class="o">|</span>   <span class="p">...</span>
+</pre></div>
+The code below shows an example of how to create the CSV:
+<div class="codehilite"><pre><span></span><span class="nv">train_dir</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">train</span><span class="s1">&#39;</span> # <span class="nv">Path</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">train</span> <span class="nv">directory</span>
+<span class="nv">class_dirs</span> <span class="o">=</span> [<span class="nv">i</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">os</span>.<span class="nv">listdir</span><span class="ss">(</span><span class="nv">path</span><span class="o">=</span><span class="nv">train_dir</span><span class="ss">)</span> <span class="k">if</span> <span class="nv">os</span>.<span class="nv">path</span>.<span class="nv">isdir</span><span class="ss">(</span><span class="nv">os</span>.<span class="nv">path</span>.<span class="nv">join</span><span class="ss">(</span><span class="nv">train_dir</span>, <span class="nv">i</span><span class="ss">))</span>]
+ <span class="nv">with</span> <span class="nv">open</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">train/label.csv</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">w</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="nv">as</span> <span class="nv">train_csv</span>:
+    <span class="nv">fieldnames</span> <span class="o">=</span> [<span class="s1">&#39;</span><span class="s">File Name</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">Label</span><span class="s1">&#39;</span>]
+    <span class="nv">writer</span> <span class="o">=</span> <span class="nv">csv</span>.<span class="nv">DictWriter</span><span class="ss">(</span><span class="nv">train_csv</span>, <span class="nv">fieldnames</span><span class="o">=</span><span class="nv">fieldnames</span><span class="ss">)</span>
+    <span class="nv">writer</span>.<span class="nv">writeheader</span><span class="ss">()</span>
+    <span class="nv">label</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="nv">current_class</span> <span class="nv">in</span> <span class="nv">class_dirs</span>:
+        <span class="k">for</span> <span class="nv">image</span> <span class="nv">in</span> <span class="nv">os</span>.<span class="nv">listdir</span><span class="ss">(</span><span class="nv">os</span>.<span class="nv">path</span>.<span class="nv">join</span><span class="ss">(</span><span class="nv">train_dir</span>, <span class="nv">current_class</span><span class="ss">))</span>:
+            <span class="nv">writer</span>.<span class="nv">writerow</span><span class="ss">(</span>{<span class="s1">&#39;</span><span class="s">File Name</span><span class="s1">&#39;</span>: <span class="nv">str</span><span class="ss">(</span><span class="nv">image</span><span class="ss">)</span>, <span class="s1">&#39;</span><span class="s">Label</span><span class="s1">&#39;</span>:<span class="nv">label</span>}<span class="ss">)</span>
+        <span class="nv">label</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nv">train_csv</span>.<span class="nv">close</span><span class="ss">()</span>
+</pre></div></p>
+<h3 id="enable-multi-gpu-training">Enable Multi-GPU Training</h3>
+<p>Auto-Keras support multiple GPU training in the default setting. 
+There's no additional step needed to enable multiple GPU training. 
+However, if multiple-GPU training is not a desirable behavior. 
+You can disable it via environmental variable. <code>CUDA_VISIBLE_DEVICES</code>. 
+For example, in your bash: <code>export CUDA_VISIBLE_DEVICES=0</code>. 
+Keep in mind that when using multiple-GPU, make sure batch size is big enough that multiple-gpu context switch overhead won't effect the performance too much. 
+Otherwise multiple-gpu training may be slower than single-GPU training.</p>
+<h2 id="portable-models">Portable Models</h2>
+<h3 id="how-to-export-portable-model">How to export Portable model?</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/portable_models/portable_load.py">[source]</a></p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras</span> <span class="kn">import</span> <span class="n">ImageClassifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">augment</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">export_autokeras_model</span><span class="p">(</span><span class="n">model_file_name</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The model will be stored into the path <code>model_file_name</code>. </p>
+<h3 id="how-to-load-exported-portable-model">How to load exported Portable model?</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/portable_models/portable_load.py">[source]</a></p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.utils</span> <span class="kn">import</span> <span class="n">pickle_from_file</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pickle_from_file</span><span class="p">(</span><span class="n">model_file_name</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The model will be loaded from the path <code>model_file_name</code> and then you can use the functions listed in <code>PortableImageSupervised</code>.</p>
+<h2 id="model-visualizations">Model Visualizations</h2>
+<h3 id="how-to-visualize-the-best-selected-architecture">How to visualize the best selected architecture?</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/visualizations/visualize.py">[source]</a></p>
+<p>While trying to create a model, let's say an Image classifier on MNIST, there is a facility for the user to visualize a .PDF depiction of the best architecture that was chosen by autokeras, after model training is complete. </p>
+<p>Prerequisites : 
+1) graphviz must be installed in your system. Refer <a href="https://graphviz.gitlab.io/download/">Installation Guide</a><br />
+2) Additionally, also install "graphviz" python package using pip / conda</p>
+<div class="codehilite"><pre><span></span><span class="n">pip</span><span class="o">:</span>  <span class="n">pip</span> <span class="n">install</span> <span class="n">graphviz</span>
+
+<span class="n">conda</span> <span class="o">:</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span><span class="o">-</span><span class="n">graphviz</span>
+</pre></div>
+
+
+<p>If the above installations are complete, proceed with the following steps :</p>
+<p>Step 1 : Specify a <em>path</em> before starting your model training</p>
+<div class="codehilite"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="ss">&quot;~/automodels/&quot;</span><span class="p">,</span><span class="k">verbose</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">augment</span><span class="o">=</span><span class="k">False</span><span class="p">)</span> <span class="o">#</span> <span class="n">Give</span> <span class="n">a</span> <span class="n">custom</span> <span class="n">path</span> <span class="k">of</span> <span class="n">your</span> <span class="n">choice</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">time_limit</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">final_fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">retrain</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Step 2 : After the model training is complete, run <em>examples/visualize.py</em>, whilst passing the same <em>path</em> as parameter</p>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="nv">__name__</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="s">__main__</span><span class="s1">&#39;</span>:
+    <span class="nv">visualize</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">~/automodels/</span><span class="s1">&#39;</span><span class="ss">)</span>
+</pre></div>
+
+
+<h2 id="net-modules">Net Modules</h2>
+<h3 id="mlpmodule-tutorial">MlpModule tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/net_modules/mlp_module.py">[source]</a></p>
+<p><code>MlpGenerator</code> in <code>net_module.py</code> is a child class of <code>Networkmodule</code>. It can generates neural architecture with MLP modules </p>
+<p>Normally, there's two place to call the MlpGenerator, one is call <code>MlpGenerator.fit</code> while the other is <code>MlpGenerator.final_fit</code>.</p>
+<p>For example, in a image classification class <code>ImageClassifier</code>, one can initialize the cnn module as:</p>
+<p><div class="codehilite"><pre><span></span><span class="n">mlpModule</span> <span class="o">=</span> <span class="n">MlpModule</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">searcher_args</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+</pre></div>
+Where:
+* <code>loss</code> and <code>metric</code> determines by the type of training model(classification or regression or others)
+* <code>search_args</code> can be referred in <code>search.py</code>
+* <code>path</code> is the path to store the whole searching process and generated model.
+* <code>verbose</code> is a boolean. Setting it to true prints to stdout.</p>
+<p>Then, for the searching part, one can call:
+<div class="codehilite"><pre><span></span><span class="n">mlpModule</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">n_output_node</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">time_limit</span><span class="o">=</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+where:
+* n_output_node: A integer value represent the number of output node in the final layer.
+* input_shape: A tuple to express the shape of every train entry. For example,
+                MNIST dataset would be (28,28,1).
+* train_data: A PyTorch DataLoader instance representing the training data.
+* test_data: A PyTorch DataLoader instance representing the testing data.
+* time_limit: A integer value represents the time limit on searching for models.</p>
+<p>And for final testing(testing the best searched model), one can call:
+<div class="codehilite"><pre><span></span><span class="n">mlpModule</span><span class="o">.</span><span class="n">final_fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">trainer_args</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">retrain</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+where:
+* train_data: A DataLoader instance representing the training data.
+* test_data: A DataLoader instance representing the testing data.
+* trainer_args: A dictionary containing the parameters of the ModelTrainer constructor.
+* retrain: A boolean of whether reinitialize the weights of the model.</p>
+<h3 id="cnnmodule-tutorial">CnnModule tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/net_modules/cnn_module.py">[source]</a></p>
+<p><code>CnnGenerator</code> in <code>net_module.py</code> is a child class of <code>Networkmodule</code>. It can generates neural architecture with basic cnn modules
+and the ResNet module. </p>
+<p>Normally, there's two place to call the CnnGenerator, one is call <code>CnnGenerator.fit</code> while the other is <code>CnnGenerator.final_fit</code>.</p>
+<p>For example, in a image classification class <code>ImageClassifier</code>, one can initialize the cnn module as:</p>
+<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras</span> <span class="kn">import</span> <span class="n">CnnModule</span>
+<span class="kn">from</span> <span class="nn">autokeras.nn.loss_function</span> <span class="kn">import</span> <span class="n">classification_loss</span>
+<span class="kn">from</span> <span class="nn">autokeras.nn.metric</span> <span class="kn">import</span> <span class="n">Accuracy</span>
+
+<span class="n">TEST_FOLDER</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="n">cnnModule</span> <span class="o">=</span> <span class="n">CnnModule</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">classification_loss</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">Accuracy</span><span class="p">,</span> <span class="n">searcher_args</span><span class="o">=</span><span class="p">{},</span> <span class="n">path</span><span class="o">=</span><span class="n">TEST_FOLDER</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+Where:
+* <code>loss</code> and <code>metric</code> determines by the type of training model(classification or regression or others)
+* <code>search_args</code> can be referred in <code>search.py</code>
+* <code>path</code> is the path to store the whole searching process and generated model.
+* <code>verbose</code> is a boolean. Setting it to true prints to stdout.</p>
+<p>Then, for the searching part, one can call:
+<div class="codehilite"><pre><span></span><span class="n">cnnModule</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">n_output_node</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">time_limit</span><span class="o">=</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+where:
+* n_output_node: A integer value represent the number of output node in the final layer.
+* input_shape: A tuple to express the shape of every train entry. For example,
+                MNIST dataset would be (28,28,1).
+* train_data: A PyTorch DataLoader instance representing the training data.
+* test_data: A PyTorch DataLoader instance representing the testing data.
+* time_limit: A integer value represents the time limit on searching for models.</p>
+<p>And for final testing(testing the best searched model), one can call:
+<div class="codehilite"><pre><span></span><span class="n">cnnModule</span><span class="o">.</span><span class="n">final_fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">trainer_args</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">retrain</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+where:
+* train_data: A DataLoader instance representing the training data.
+* test_data: A DataLoader instance representing the testing data.
+* trainer_args: A dictionary containing the parameters of the ModelTrainer constructor.
+* retrain: A boolean of whether reinitialize the weights of the model.</p>
+<h2 id="task-modules">Task Modules</h2>
+<h3 id="automated-text-classifier-tutorial">Automated text classifier tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/task_modules/text/text_classification.py">[source]</a></p>
+<p>Class <code>TextClassifier</code> and <code>TextRegressor</code> are designed for automated generate best performance cnn neural architecture
+for a given text dataset. </p>
+<div class="codehilite"><pre><span></span>    <span class="n">clf</span> <span class="o">=</span> <span class="n">TextClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">time_limit</span><span class="o">=</span><span class="mi">12</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+
+<ul>
+<li>x_train: string format text data</li>
+<li>y_train: int format text label</li>
+</ul>
+<p>After searching the best model, one can call <code>clf.final_fit</code> to test the best model found in searching.</p>
+<p><strong>Notes:</strong> Preprocessing of the text data:
+* Class <code>TextClassifier</code> and <code>TextRegressor</code> contains a pre-process of the text data. Which means the input data
+should be in string format. 
+* The default pre-process model uses the <a href="https://nlp.stanford.edu/projects/glove/">glove6B model</a> from Stanford NLP. 
+* To change the default setting of the pre-process model, one need to change the corresponding variable:
+<code>EMBEDDING_DIM</code>, <code>PRE_TRAIN_FILE_LINK</code>, <code>PRE_TRAIN_FILE_LINK</code>, <code>PRE_TRAIN_FILE_NAME</code> in <code>constant.py</code>.</p>
+<h2 id="pretrained-models">Pretrained Models</h2>
+<h3 id="object-detection-tutorial">Object detection tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/examples/pretrained_models/object_detection/object_detection_example.py">[source]</a></p>
+<h4 id="by-wuyang-chen-from-dr-atlas-wangs-group-at-cse-department-texas-am">by Wuyang Chen from <a href="http://www.atlaswang.com/">Dr. Atlas Wang's group</a> at CSE Department, Texas A&amp;M.</h4>
+<p>class_id_mapping = {0 : "Business", 1 : "Sci/Tech", 2 : "Sports", 3 : "World"}</p>
+<p><code>ObjectDetector</code> in <code>object_detector.py</code> is a child class of <code>Pretrained</code>. Currently it can load a pretrained SSD model (<a href="https://arxiv.org/abs/1512.02325">Liu, Wei, et al. "Ssd: Single shot multibox detector." European conference on computer vision. Springer, Cham, 2016.</a>) and find object(s) in a given image.</p>
+<p>Let's first import the ObjectDetector and create a detection model (<code>detector</code>) with
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.pretrained.object_detector</span> <span class="kn">import</span> <span class="n">ObjectDetector</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">ObjectDetector</span><span class="p">()</span>
+</pre></div>
+It will automatically download and load the weights into <code>detector</code>.</p>
+<p><strong>Note:</strong>  the <code>ObjectDetector</code> class can automatically detect the existance of available cuda device(s), and use the device if exists.</p>
+<p>Finally you can make predictions against an image:
+<div class="codehilite"><pre><span></span>    <span class="n">results</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;/path/to/images/000001.jpg&quot;</span><span class="p">,</span> <span class="n">output_file_path</span><span class="o">=</span><span class="s2">&quot;/path/to/images/&quot;</span><span class="p">)</span>
+</pre></div>
+Function <code>detector.predict()</code> requires the path to the image. If the <code>output_file_path</code> is not given, the <code>detector</code> will just return the numerical results as a list of dictionaries. Each dictionary is like {"left": int, "top": int, "width": int, "height": int: "category": str, "confidence": float}, where <code>left</code> and <code>top</code> is the (left, top) coordinates of the bounding box of the object and <code>width</code> and <code>height</code> are width and height of the box. <code>category</code> is a string representing the class the object belongs to, and the confidence can be regarded as the probability that the model believes its prediction is correct. If the <code>output_file_path</code> is given, then the results mentioned above will be plotted and saved in a new image file with suffix "_prediction" into the given <code>output_file_path</code>. If you run the example/object_detection/object_detection_example.py, you will get result
+<code>[{'category': 'person', 'width': 331, 'height': 500, 'left': 17, 'confidence': 0.9741123914718628, 'top': 0}]</code></p>
+<h3 id="sentiment-analysis-tutorial">Sentiment Analysis tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/autokeras/pretrained/text_classifier.py">[source]</a></p>
+<p>The sentiment analysis module provides an interface to find the sentiment of any text. The pretrained model is obtained by training <a href="https://arxiv.org/abs/1810.04805">Google AI’s BERT model</a> on <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a>. </p>
+<p>Let’s import the <code>SentimentAnalysis</code> module from <em>text_classifier.py</em>. It is derived from the super class <code>TextClassifier</code> which is the child class of <code>Pretrained</code> class.
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.pretrained.text_classifier</span> <span class="kn">import</span> <span class="n">SentimentAnalysis</span>
+<span class="n">sentiment_analysis</span> <span class="o">=</span> <span class="n">SentimentAnalysis</span><span class="p">()</span>
+</pre></div>
+During initialization of <code>SentimentAnalysis</code>, the pretrained model is loaded into memory i.e. CPU’s or GPU’s, if available.</p>
+<p>Now, you may directly call the <code>predict</code> function in <code>SentimentAnalysis</code> class on any input sentence provided as a string as shown below. The function returns a value between 0 and 1. 
+<div class="codehilite"><pre><span></span><span class="n">polarity</span> <span class="o">=</span> <span class="n">sentiment_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;The model is working well..&quot;</span><span class="p">)</span>
+</pre></div>
+<strong>Note:</strong> If the output value of the <code>predict</code> function is close to 0, it implies the statement has negative sentiment, whereas value close to 1 implies positive sentiment.</p>
+<p>If you run <em>sentiment_analysis_example.py</em>, you should get an output value of 0.9 which implies that the input statement <em>The model is working well..</em> has strong positive sentiment.</p>
+<h3 id="topic-classification-tutorial">Topic Classification tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/autokeras/pretrained/text_classifier.py">[source]</a></p>
+<p>The topic classifier module provides an interface to find the topic of any text. The pretrained model is obtained by training <a href="https://arxiv.org/abs/1810.04805">Google AI’s BERT model</a> on <a href="https://www.di.unipi.it/~gulli/AG_corpus_of_news_articles.html">AGNews dataset</a>. </p>
+<p>Let’s import the <code>TopicClassifier</code> module from <em>text_classifier.py</em>. It is derived from the super class <code>TextClassifier</code> which is the child class of <code>Pretrained</code> class. 
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.pretrained.text_classifier</span> <span class="kn">import</span> <span class="n">TopicClassifier</span>
+<span class="n">topic_classifier</span> <span class="o">=</span> <span class="n">TopicClassifier</span><span class="p">()</span>
+</pre></div>
+During initialization of <code>TopicClassifier</code>, the pretrained model is loaded into memory i.e. CPU’s or GPU’s, if available.</p>
+<p>Now, you may directly call the <code>predict</code> function in <code>TopicClassifier</code> class on any input sentence provided as a string as shown below. The function returns one of the fours topics <strong>Business</strong>, <strong>Sci/Tech</strong>, <strong>World</strong> and <strong>Sports</strong>. 
+<div class="codehilite"><pre><span></span><span class="n">class_name</span> <span class="o">=</span> <span class="n">topic_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;With some more practice, they will definitely make it to finals..&quot;</span><span class="p">)</span>
+</pre></div></p>
+<p>If you run <em>topic_classifier_example.py</em>, you should see the predict function returns the label <strong>Sports</strong>, which is the predicted label for the input statement.</p>
+<h3 id="voice-generator-tutorial">Voice generator tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/autokeras/pretrained/voice_generator/voice_generator.py">[source]</a></p>
+<p>The voice generator is a refactor of <a href="https://github.com/r9y9/deepvoice3_pytorch">deepvoice3</a>. 
+The structure contains three main parts:</p>
+<ul>
+<li><strong>Encoder</strong>: A  fully-convolutional  encoder,  which  converts  textual  features  to  an  internallearned representation.</li>
+<li><strong>Decoder</strong>: A fully-convolutional causal decoder, which decodes the learned representationwith a multi-hop convolutional attention mechanism into a low-dimensional audio repre-sentation (mel-scale spectrograms) in an autoregressive manner.</li>
+<li><strong>Converter</strong>:  A fully-convolutional post-processing network, which predicts final vocoderparameters (depending on the vocoder choice) from the decoder hidden states.  Unlike thedecoder, the converter is non-causal and can thus depend on future context information</li>
+</ul>
+<p>For more details, please refer the original paper: 
+<a href="https://arxiv.org/pdf/1710.07654.pdf"><strong>Deep Voice 3: Scaling Text-to-Speech with Convolutional Sequence Learning</strong></a></p>
+<p>Example:
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.pretrained</span> <span class="kn">import</span> <span class="n">VoiceGenerator</span>
+<span class="n">voice_generator</span> <span class="o">=</span> <span class="n">VoiceGenerator</span><span class="p">()</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The approximation of pi is 3.14&quot;</span>
+<span class="n">voice_generator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;test.wav&quot;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="voice-recognizer-tutorial">Voice recognizer tutorial.</h3>
+<p><a href="https://github.com/keras-team/autokeras/blob/master/autokeras/pretrained/voice_recognizer.py">[source]</a></p>
+<p>The voice recognizer is a refactor of <a href="https://github.com/SeanNaren/deepspeech.pytorch">deepspeech</a>. 
+The model structure contains two parts:
+* Encoder: Convolutional layer followed by recurrent neural network and then fully convert network. Output is the hidden voice information.
+* Decoder: Decode the hidden voice information to the voice wave.</p>
+<p>For more details, please refer the original paper:
+<a href="https://arxiv.org/abs/1512.02595"><strong>Deep Speech 2: End-to-End Speech Recognition in English and Mandarin</strong></a></p>
+<p>Because currently <a href="https://github.com/pytorch/audio">torchaudio</a> does not support pip install. So the current package doesn't support audio parsing part.
+To use the voice recognizer, one should first parse the audio following the standard below:</p>
+<ul>
+<li>First, install the <a href="https://github.com/pytorch/audio">torchaudio</a>, the install process can refer the repo.</li>
+<li>Seconder use the following audio parser
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.constant</span> <span class="kn">import</span> <span class="n">Constant</span>
+<span class="kn">import</span> <span class="nn">torchaudio</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span>
+<span class="kn">import</span> <span class="nn">librosa</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">load_audio</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">sound</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">torchaudio</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">sound</span> <span class="o">=</span> <span class="n">sound</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sound</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">sound</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">sound</span> <span class="o">=</span> <span class="n">sound</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sound</span> <span class="o">=</span> <span class="n">sound</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># multiple channels, average</span>
+    <span class="k">return</span> <span class="n">sound</span>
+
+
+<span class="k">class</span> <span class="nc">SpectrogramParser</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">audio_conf</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">augment</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parses audio file into spectrogram with optional normalization and various augmentations</span>
+<span class="sd">        :param audio_conf: Dictionary containing the sample rate, window and the window length/stride in seconds</span>
+<span class="sd">        :param normalize(default False):  Apply standard mean and deviation normalization to audio tensor</span>
+<span class="sd">        :param augment(default False):  Apply random tempo and gain perturbations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpectrogramParser</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window_stride</span> <span class="o">=</span> <span class="n">audio_conf</span><span class="p">[</span><span class="s1">&#39;window_stride&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">=</span> <span class="n">audio_conf</span><span class="p">[</span><span class="s1">&#39;window_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">=</span> <span class="n">audio_conf</span><span class="p">[</span><span class="s1">&#39;sample_rate&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">hamming</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span> <span class="o">=</span> <span class="n">normalize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">augment</span> <span class="o">=</span> <span class="n">augment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_prob</span> <span class="o">=</span> <span class="n">audio_conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;noise_prob&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">audio_path</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">load_audio</span><span class="p">(</span><span class="n">audio_path</span><span class="p">)</span>
+
+        <span class="n">n_fft</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">)</span>
+        <span class="n">win_length</span> <span class="o">=</span> <span class="n">n_fft</span>
+        <span class="n">hop_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_stride</span><span class="p">)</span>
+        <span class="c1"># STFT</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="n">n_fft</span><span class="p">,</span> <span class="n">hop_length</span><span class="o">=</span><span class="n">hop_length</span><span class="p">,</span>
+                         <span class="n">win_length</span><span class="o">=</span><span class="n">win_length</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span>
+        <span class="n">spect</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">magphase</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+        <span class="c1"># S = log(S+1)</span>
+        <span class="n">spect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">spect</span><span class="p">)</span>
+        <span class="n">spect</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">spect</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">:</span>
+            <span class="n">mean</span> <span class="o">=</span> <span class="n">spect</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">std</span> <span class="o">=</span> <span class="n">spect</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+            <span class="n">spect</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span>
+            <span class="n">spect</span><span class="o">.</span><span class="n">div_</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">spect</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">SpectrogramParser</span><span class="p">(</span><span class="n">Constant</span><span class="o">.</span><span class="n">VOICE_RECONGINIZER_AUDIO_CONF</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">spect</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_audio</span><span class="p">(</span><span class="s2">&quot;test.wav&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+</pre></div></li>
+</ul>
+<p>After this we will have the audio parsed as torch tensor in variable <code>spect</code>. Then we can use the following to recognize the voice:</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">autokeras.pretrained</span> <span class="kn">import</span> <span class="n">VoiceRecognizer</span>
+<span class="n">voice_recognizer</span> <span class="o">=</span> <span class="n">VoiceRecognizer</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">voice_recognizer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">audio_data</span><span class="o">=</span><span class="n">spect</span><span class="p">))</span>
+</pre></div>
+
+<p>This voice recognizer pretrained model is well tuned based on the <a href="http://www.speech.cs.cmu.edu/databases/an4/">AN4</a> dataset. It has a large probability 
+cannot perform well on other dataset. </p>
+<!-- [Data with numpy array (.npy) format.]: https://github.com/keras-team/autokeras/blob/master/examples/a_simple_example/mnist.py
+[What if your data are raw image files (*e.g.* .jpg, .png, .bmp)?]: https://github.com/keras-team/autokeras/blob/master/examples/a_simple_example/load_raw_image.py
+[How to export Portable model]: https://github.com/keras-team/autokeras/blob/master/examples/portable_models/portable_load.py
+[How to load exported Portable model?]: https://github.com/keras-team/autokeras/blob/master/examples/portable_models/portable_load.py
+[How to visualize the best selected architecture?]: https://github.com/keras-team/autokeras/blob/master/examples/visualizations/visualize.py
+[MlpModule tutorial]: https://github.com/keras-team/autokeras/blob/master/examples/net_modules/mlp_module.py
+[CnnModule tutorial]: https://github.com/keras-team/autokeras/blob/master/examples/net_modules/cnn_module.py
+[Automated text classifier tutorial]: https://github.com/keras-team/autokeras/blob/master/examples/task_modules/text/text.py
+[Object Detection tutorial]: https://github.com/keras-team/autokeras/blob/master/examples/pretrained_models/object_detection/object_detection_example.py -->
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../tutorial/export/" title="Export Model" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Export Model
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../docker/" title="Docker" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Docker
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8e03edeb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.4/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
